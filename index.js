@@ -11,7 +11,12 @@ const app = express(); // Laver en express app godtager requests og responses fr
 
 require('./db'); // Importerer database.js (es6) (import af db-connection)
 
+// serve docs
+app.use("/", express.static("docs"))
+
 app.use(cors()); // Middleware som tillader at vi kan sende requests fra en anden port (3000)
+
+app.use(express.json())
 
 //Routes
 app.use("/api/v1", animals); // Middleware som tillader at vi kan sende json data i requests
